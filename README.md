@@ -37,13 +37,12 @@ Peerverse is not just another EdTech platform—it's a new learning economy powe
 ### Prerequisites
 - [Rust](https://www.rust-lang.org/tools/install)
 - [DFX SDK](https://internetcomputer.org/docs/current/developer-docs/setup/install-dfx)
-- [Node.js](https://nodejs.org/) (optional, for frontend integration)
 
 ### Steps
 
 1. **Clone the repository:**
    ```sh
-   git clone <your-repo-url>
+   git clone https://github.com/sorbadek/wchl25_icp_hackathon
    cd wchl25_icp_hackathon
    ```
 
