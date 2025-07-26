@@ -1,0 +1,14 @@
+{
+  "canisters": {
+    "wchl25_icp_hackathon": {
+      "main": "src/lib.rs",
+      "type": "rust"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "cargo"
+    }
+  },
+  "version": 1
+}
