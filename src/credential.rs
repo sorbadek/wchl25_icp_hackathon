@@ -34,3 +34,32 @@ pub fn mint_credential(user_id: String, session_id: u64) -> u64 {
     });
     credential_id
 }
+
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
+pub struct Certificate {
+    pub id: String,
+    pub user_id: String,
+    pub course_id: String,
+    pub issued_at: u64,
+}
+
+thread_local! {
+    static CERTIFICATES: RefCell<HashMap<String, Certificate>> = RefCell::new(HashMap::new());
+}
+
+#[ic_cdk::update]
+pub fn issue_certificate(id: String, user_id: String, course_id: String, issued_at: u64) {
+    CERTIFICATES.with(|certs| {
+        certs.borrow_mut().insert(id.clone(), Certificate {
+            id,
+            user_id,
+            course_id,
+            issued_at,
+        });
+    });
+}
+
+#[ic_cdk::query]
+pub fn get_certificate(cert_id: String) -> Option<Certificate> {
+    CERTIFICATES.with(|certs| certs.borrow().get(&cert_id).cloned())
+}

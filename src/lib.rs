@@ -1,12 +1,6 @@
-mod user_profile;
-mod xp;
-mod session;
-mod content;
-mod credential;
-
-// Re-export public functions for canister interface
-pub use user_profile::*;
-pub use xp::*;
-pub use session::*;
-pub use content::*;
-pub use credential::*;
+pub mod user_profile;
+pub mod content;
+pub mod session;
+pub mod credential;
+pub mod xp;
+pub mod video_session;
