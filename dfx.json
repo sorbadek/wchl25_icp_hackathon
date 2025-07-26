@@ -1,7 +1,8 @@
 {
   "canisters": {
     "wchl25_icp_hackathon": {
-      "main": "src/lib.rs",
+      "package": "wchl25_icp_hackathon",
+      "candid": "src/wchl25_icp_hackathon/wchl25_icp_hackathon.did",
       "type": "rust"
     }
   },
