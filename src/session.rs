@@ -1,5 +1,5 @@
 use candid::{CandidType, Deserialize};
-use ic_cdk::storage;
+use std::cell::RefCell;
 use std::collections::HashMap;
 
 #[derive(CandidType, Deserialize, Clone)]
@@ -13,8 +13,8 @@ pub struct Session {
 }
 
 thread_local! {
-    static SESSIONS: storage::StableCell<HashMap<u64, Session>> = storage::StableCell::new(HashMap::new());
-    static NEXT_SESSION_ID: storage::StableCell<u64> = storage::StableCell::new(0);
+    static SESSIONS: RefCell<HashMap<u64, Session>> = RefCell::new(HashMap::new());
+    static NEXT_SESSION_ID: RefCell<u64> = RefCell::new(0);
 }
 
 #[ic_cdk::update]

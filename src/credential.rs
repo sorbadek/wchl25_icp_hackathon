@@ -1,5 +1,5 @@
 use candid::{CandidType, Deserialize};
-use ic_cdk::storage;
+use std::cell::RefCell;
 use std::collections::HashMap;
 
 #[derive(CandidType, Deserialize, Clone)]
@@ -11,8 +11,8 @@ pub struct Credential {
 }
 
 thread_local! {
-    static CREDENTIALS: storage::StableCell<HashMap<u64, Credential>> = storage::StableCell::new(HashMap::new());
-    static NEXT_CREDENTIAL_ID: storage::StableCell<u64> = storage::StableCell::new(0);
+    static CREDENTIALS: RefCell<HashMap<u64, Credential>> = RefCell::new(HashMap::new());
+    static NEXT_CREDENTIAL_ID: RefCell<u64> = RefCell::new(0);
 }
 
 #[ic_cdk::update]

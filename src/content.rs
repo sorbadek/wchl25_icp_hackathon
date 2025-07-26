@@ -1,5 +1,5 @@
 use candid::{CandidType, Deserialize};
-use ic_cdk::storage;
+use std::cell::RefCell;
 use std::collections::HashMap;
 
 #[derive(CandidType, Deserialize, Clone)]
@@ -13,8 +13,8 @@ pub struct Content {
 }
 
 thread_local! {
-    static CONTENTS: storage::StableCell<HashMap<u64, Content>> = storage::StableCell::new(HashMap::new());
-    static NEXT_CONTENT_ID: storage::StableCell<u64> = storage::StableCell::new(0);
+    static CONTENTS: RefCell<HashMap<u64, Content>> = RefCell::new(HashMap::new());
+    static NEXT_CONTENT_ID: RefCell<u64> = RefCell::new(0);
 }
 
 #[ic_cdk::update]
