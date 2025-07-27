@@ -35,7 +35,7 @@ pub fn mint_credential(user_id: String, session_id: u64) -> u64 {
     credential_id
 }
 
-#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
+#[derive(CandidType, Deserialize, Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub struct Certificate {
     pub id: String,
     pub user_id: String,

@@ -39,15 +39,12 @@ pub fn upload_content(creator: String, title: String, ipfs_link: String, require
     content_id
 }
 
-use std::collections::HashMap;
-use std::cell::RefCell;
-
 thread_local! {
     static COURSES: RefCell<HashMap<String, Course>> = RefCell::new(HashMap::new());
     static RESOURCES: RefCell<HashMap<String, Resource>> = RefCell::new(HashMap::new());
 }
 
-#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
+#[derive(CandidType, Deserialize, Clone)]
 pub struct Course {
     pub id: String,
     pub title: String,
@@ -56,7 +53,7 @@ pub struct Course {
     pub enrolled: Vec<String>,
 }
 
-#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
+#[derive(CandidType, Deserialize, Clone)]
 pub struct Resource {
     pub id: String,
     pub title: String,
